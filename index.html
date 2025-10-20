@@ -16,6 +16,7 @@
       color: #d63384;
       overflow: hidden;
       text-align: center;
+      cursor: pointer; /* gợi nhắc click để nhạc chạy */
     }
 
     .card {
@@ -52,20 +53,6 @@
       50% { opacity: 1; }
       to { transform: translateY(-10vh) scale(1); opacity: 0; }
     }
-
-    #playMusic {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #ff80ab;
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 10px 20px;
-      cursor: pointer;
-      font-size: 1rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
   </style>
 </head>
 <body>
@@ -79,11 +66,9 @@
     <p>Siêng tập lênn</p>
   </div>
 
-  <button id="playMusic">🎵 Bật nhạc</button>
-
-  <!-- Nhạc nền: hãy đặt file music.mp3 cùng folder với file HTML -->
+  <!-- Nhạc nền: đặt file music.mp3 cùng folder hoặc trong public/ -->
   <audio id="bgMusic" loop>
-    <source src="music.mp3" type="audio/mpeg">
+    <source src="/music.mp3" type="audio/mpeg">
     Trình duyệt của bạn không hỗ trợ audio.
   </audio>
 
@@ -100,13 +85,15 @@
     };
     setInterval(createHeart, 500);
 
-    // Bật nhạc khi click nút
+    // Bật nhạc khi click bất kỳ đâu trên trang, chỉ 1 lần
     const music = document.getElementById("bgMusic");
-    document.getElementById("playMusic").addEventListener("click", () => {
-      music.play();
-      document.getElementById("playMusic").style.display = "none";
+    let musicStarted = false;
+    document.body.addEventListener("click", () => {
+      if (!musicStarted) {
+        music.play();
+        musicStarted = true;
+      }
     });
   </script>
 </body>
 </html>
-
