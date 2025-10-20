@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chúc công túa 20/10 vui vẻ 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #f9d8e7, #fce4ec);
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      color: #d63384;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 8px 0;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff80ab;
+      animation: fly 6s linear infinite;
+    }
+
+    @keyframes fly {
+      from { transform: translateY(100vh) scale(0.5); opacity: 0; }
+      50% { opacity: 1; }
+      to { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💖 Chúc công túa 20/10 vui vẻ 💖</h1>
+    <p>Yêu cục dàng</p>
+    <p>Chúc em luôn học tốt điểm tốt</p>
+    <p>Chúc vợ 20/10 vui vẻ</p>
+    <p>Cảm ơn luôn trò chuyện với anh</p>
+    <p>Siêng tập gym lên đi</p>
+    <p>Chúc công chúa luôn xinh đẹp, hạnh phúc và được yêu thương thật nhiều 💕</p>
+  </div>
+
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/08/04/audio_8029fbd141.mp3?filename=romantic-piano-142327.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    // tạo tim bay
+    const createHeart = () => {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "💗";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = 3 + Math.random() * 3 + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    };
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
