@@ -52,6 +52,20 @@
       50% { opacity: 1; }
       to { transform: translateY(-10vh) scale(1); opacity: 0; }
     }
+
+    #playMusic {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #ff80ab;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
@@ -61,12 +75,20 @@
     <p>Chúc em luôn học tốt điểm tốt</p>
     <p>Chúc vợ 20/10 vui vẻ</p>
     <p>Cảm ơn luôn trò chuyện với anh</p>
-    <p>Siêng tập gym lên đi</p>
     <p>Chúc công chúa luôn xinh đẹp, hạnh phúc và được yêu thương thật nhiều 💕</p>
+    <p>Siêng tập lênn</p>
   </div>
 
+  <button id="playMusic">🎵 Bật nhạc</button>
+
+  <!-- Nhạc nền: hãy đặt file music.mp3 cùng folder với file HTML -->
+  <audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ audio.
+  </audio>
+
   <script>
-    // tạo tim bay
+    // Tạo tim bay
     const createHeart = () => {
       const heart = document.createElement("div");
       heart.classList.add("heart");
@@ -77,37 +99,14 @@
       setTimeout(() => heart.remove(), 6000);
     };
     setInterval(createHeart, 500);
+
+    // Bật nhạc khi click nút
+    const music = document.getElementById("bgMusic");
+    document.getElementById("playMusic").addEventListener("click", () => {
+      music.play();
+      document.getElementById("playMusic").style.display = "none";
+    });
   </script>
-
-  <!-- Nhạc nền Đức Phúc -->
-  <iframe width="0" height="0"
-    src="https://www.youtube.com/embed/kkb8DczvhSQ?autoplay=1&loop=1&playlist=kkb8DczvhSQ"
-    frameborder="0" allow="autoplay; encrypted-media">
-  </iframe>
-  <button id="playMusic" style="
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #ff80ab;
-  color: white;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 1rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-">🎵 Bật nhạc</button>
-
-<audio id="bgMusic" loop>
-  <source src="https://docs.google.com/uc?export=download&id=1dRTwNhSxq0aYwCOTeWmTXQcyA4q8qF2Q" type="audio/mpeg">
-</audio>
-
-<script>
-document.getElementById("playMusic").addEventListener("click", () => {
-  const music = document.getElementById("bgMusic");
-  music.play();
-  document.getElementById("playMusic").style.display = "none";
-});
-</script>
 </body>
 </html>
+
